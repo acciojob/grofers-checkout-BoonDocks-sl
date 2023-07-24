@@ -3,23 +3,23 @@ getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-//Add your code here
-	  const prices = table.querySelectorAll(".price");
-      let totalPrice = 0;
-  
-      prices.forEach(price => {
-        totalPrice += parseInt(price.textContent);
-      });
-  
-      const totalRow = document.createElement("tr");
-      const totalCell = document.createElement("td");
-      totalCell.setAttribute("colspan", "2");
-      totalCell.textContent = "Total Price: " + totalPrice;
-  
-      totalRow.appendChild(totalCell);
-      table.appendChild(totalRow);
-  
-};
+const table = document.querySelector('table');
+const prices = document.querySelectorAll('.price');
+
+let totalPrice = 0;
+for (let i = 0; i < prices.length; i++) {
+  totalPrice += parseFloat(prices[i].innerText);
+}
+
+const newRow = document.createElement('tr');
+const totalCell = document.createElement('td');
+	totalCell.id="ans";
+totalCell.setAttribute('colspan', '2');
+totalCell.innerText = 'Total Price: ' + totalPrice.toFixed(2); // Format the total price with 2 decimal places
+
+newRow.appendChild(totalCell);
+table.appendChild(newRow);
+
+	};
 
 getSumBtn.addEventListener("click", getSum);
-
